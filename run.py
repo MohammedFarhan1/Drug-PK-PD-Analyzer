@@ -9,6 +9,7 @@ import sys
 import webbrowser
 from threading import Timer
 from dotenv import load_dotenv
+from app import app
 
 def setup_environment():
     """Setup environment and check requirements"""
@@ -48,7 +49,6 @@ def main():
         return 1
     
     try:
-        from app import app
         
         print("✅ Environment configured")
         print("🚀 Starting server...")
@@ -80,3 +80,6 @@ def main():
 
 if __name__ == '__main__':
     sys.exit(main())
+
+# For gunicorn deployment
+__all__ = ['app']
