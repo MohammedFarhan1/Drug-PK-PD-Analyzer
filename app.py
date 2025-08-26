@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify, send_file
 from flask_cors import CORS
-import os
 import io
 import pandas as pd
 from datetime import datetime
@@ -10,7 +9,9 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib import colors
 from core import DrugAnalyzer, DRUG_DATABASE
 
-app = Flask(__name__)
+import os
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'templates'))
+app = Flask(__name__, template_folder=template_dir)
 CORS(app)
 
 # Initialize analyzer
